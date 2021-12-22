@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 
 import { initDay } from "./utils"
 
