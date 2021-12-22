@@ -17,7 +17,7 @@ npm run singleDay
 
 Run specified day
 ```
-npm run singleDay --day 20 --year 2019
+npm run singleDay -- --day 20 --year 2019
 ```
 
 To debug use "singleDay:debug" instead
