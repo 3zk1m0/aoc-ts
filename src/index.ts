@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+
 import { runDay } from './runDay'
 
 import { Command } from 'commander';
