@@ -24,21 +24,27 @@ const getNeighbors = (i: number, j: number) => {
 }
 
 const part1 = (input: Input) => {
-  const parts = input.reduce((acc, row, i) => {
-    row.forEach((char, j) => {
-      if (!char.match(/[\d\.]/)) acc.push({ i, j })
-    })
-    return acc
-  }, [] as { i: number; j: number }[])
+  const parts = input.reduce(
+    (acc, row, i) => {
+      row.forEach((char, j) => {
+        if (!char.match(/[\d\.]/)) acc.push({ i, j })
+      })
+      return acc
+    },
+    [] as { i: number; j: number }[]
+  )
 
-  const numbers = input.reduce((acc, row, i) => {
-    const str = row.join('')
-    const match = [...str.matchAll(/(\d+)/g)]
-    match.forEach((m) => {
-      acc.push({ i, j: m.index, value: parseInt(m[1]) })
-    })
-    return acc
-  }, [] as { i: number; j: number; value: number }[])
+  const numbers = input.reduce(
+    (acc, row, i) => {
+      const str = row.join('')
+      const match = [...str.matchAll(/(\d+)/g)]
+      match.forEach((m) => {
+        acc.push({ i, j: m.index, value: parseInt(m[1]) })
+      })
+      return acc
+    },
+    [] as { i: number; j: number; value: number }[]
+  )
 
   const partNumbers = numbers.filter((x) => {
     const points = getPositionsAroundNumber(x.i, x.j, x.value.toString())
@@ -52,14 +58,17 @@ const part1 = (input: Input) => {
 }
 
 const part2 = (input: Input) => {
-  const gearParts = input.reduce((acc, row, i) => {
-    row.forEach((char, j) => {
-      if (char == '*') {
-        acc.push({ i, j, ratios: [] })
-      }
-    })
-    return acc
-  }, [] as { i: number; j: number; ratios: number[] }[])
+  const gearParts = input.reduce(
+    (acc, row, i) => {
+      row.forEach((char, j) => {
+        if (char == '*') {
+          acc.push({ i, j, ratios: [] })
+        }
+      })
+      return acc
+    },
+    [] as { i: number; j: number; ratios: number[] }[]
+  )
 
   input.forEach((row, i) => {
     const match = [...row.join('').matchAll(/(\d+)/g)]

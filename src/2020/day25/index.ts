@@ -1,17 +1,16 @@
 import { test, readInput, runPart } from '../../utils'
 
-
-const prepareInput = (rawInput: string) => rawInput.split('\n').map(x=>parseInt(x))
+const prepareInput = (rawInput: string) =>
+  rawInput.split('\n').map((x) => parseInt(x))
 
 const input = prepareInput(readInput())
 
 const DIVIDER = 20201227
 
 const part1 = () => {
-
   let x = 1
   let loops = 0
-  while (x != input[0] ) {
+  while (x != input[0]) {
     x *= 7
     x %= DIVIDER
     loops++
@@ -23,8 +22,7 @@ const part1 = () => {
     y %= 20201227
   }
   return y
-} 
-
+}
 
 /* Tests */
 
@@ -32,7 +30,4 @@ const part1 = () => {
 
 /* Results */
 
-runPart("Part One:", part1)
-
-
- 
+runPart('Part One:', part1)

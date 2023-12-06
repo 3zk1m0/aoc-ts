@@ -1,35 +1,47 @@
 import { test, readInput, runPart } from '../../utils'
 
-const prepareInput = (rawInput: string):Input => {
+const prepareInput = (rawInput: string): Input => {
   const parts = rawInput.split('\n\n')
-  const rules = parts[0].split('\n').map(x=> ({
+  const rules = parts[0].split('\n').map((x) => ({
     name: x.split(': ')[0],
-    boundaries: (x.match(/\d*-\d*/g) || []).map(x=>x.split('-').map(x=>parseInt(x))),
-    values: new Set((x.match(/\d*-\d*/g) || []).map(x=>{
-      const xy = x.split('-').map(x=>parseInt(x))
-      const res:number[] = []
-      for (let i = xy[0]; i<= xy[1]; i++) {
-        res.push(i)
-      }
-      return res
-    }).flat()),
+    boundaries: (x.match(/\d*-\d*/g) || []).map((x) =>
+      x.split('-').map((x) => parseInt(x))
+    ),
+    values: new Set(
+      (x.match(/\d*-\d*/g) || [])
+        .map((x) => {
+          const xy = x.split('-').map((x) => parseInt(x))
+          const res: number[] = []
+          for (let i = xy[0]; i <= xy[1]; i++) {
+            res.push(i)
+          }
+          return res
+        })
+        .flat()
+    ),
   }))
-  const myTicket = parts[1].split('\n')[1].split(',').map(x=>parseInt(x))
-  const tickets = parts[2].split('\n').slice(1).map(x=>x.split(',').map(x=>parseInt(x)))
-  return {rules,myTicket,tickets}
+  const myTicket = parts[1]
+    .split('\n')[1]
+    .split(',')
+    .map((x) => parseInt(x))
+  const tickets = parts[2]
+    .split('\n')
+    .slice(1)
+    .map((x) => x.split(',').map((x) => parseInt(x)))
+  return { rules, myTicket, tickets }
 }
 
 const input = prepareInput(readInput())
 
 interface Rule {
-  name: string,
-  boundaries: number[][],
-  values: Set<number>,
+  name: string
+  boundaries: number[][]
+  values: Set<number>
 }
 
 type Input = {
-  rules: Rule[],
-  myTicket: number[],
+  rules: Rule[]
+  myTicket: number[]
   tickets: number[][]
 }
 
@@ -38,7 +50,7 @@ const part1 = () => {
 
   let validNumbers = new Set()
   for (const rule of input.rules) {
-    rule.values.forEach(x=>validNumbers.add(x))
+    rule.values.forEach((x) => validNumbers.add(x))
   }
 
   for (const ticket of input.tickets) {
@@ -47,20 +59,18 @@ const part1 = () => {
     }
   }
 
-
   return invalid
 }
 
 const part2 = () => {
+  const { rules, myTicket, tickets }: Input = input
 
-  const {rules, myTicket, tickets}:Input = input
-  
   let validNumbers = new Set()
   for (const rule of rules) {
-    rule.values.forEach(x=>validNumbers.add(x))
+    rule.values.forEach((x) => validNumbers.add(x))
   }
 
-  const invalid:number[] = []
+  const invalid: number[] = []
 
   for (const i in tickets) {
     for (const value of tickets[i]) {
@@ -68,20 +78,18 @@ const part2 = () => {
     }
   }
 
-  for (var i = invalid.length -1; i >= 0; i--)
-    tickets.splice(invalid[i], 1);
+  for (var i = invalid.length - 1; i >= 0; i--) tickets.splice(invalid[i], 1)
 
   const fields = {}
-  rules.forEach(x=> fields[x.name] = [])
+  rules.forEach((x) => (fields[x.name] = []))
 
   for (let i = 0; i < tickets[0].length; i++) {
     for (const rule of rules) {
       let valid = true
       for (const ticket of tickets) {
-        if (!rule.values.has(ticket[i]))
-          valid = false
+        if (!rule.values.has(ticket[i])) valid = false
       }
-      if (valid) fields[rule.name].push(i) 
+      if (valid) fields[rule.name].push(i)
     }
   }
 
@@ -92,7 +100,7 @@ const part2 = () => {
       if (fields[key].length == 1) {
         const tmp = fields[key][0]
         for (const i in fields) {
-          fields[i] = fields[i].filter(x => x != tmp)
+          fields[i] = fields[i].filter((x) => x != tmp)
         }
         mapping[key] = tmp
         delete fields[key]
@@ -104,7 +112,7 @@ const part2 = () => {
   let result = 1
 
   for (const key in mapping) {
-    if (key.includes("departure")) {
+    if (key.includes('departure')) {
       result *= myTicket[mapping[key]]
     }
   }
@@ -118,5 +126,5 @@ const part2 = () => {
 
 /* Results */
 
-runPart("Part One:", part1)
-runPart("Part Two:", part2)
+runPart('Part One:', part1)
+runPart('Part Two:', part2)

@@ -25,4 +25,4 @@ const copyIndexTemplate = async (args: any) => {
 export const initDay = async (args: any): Promise<void> => {
   await createDirectory(args)
   await copyIndexTemplate(args)
-} 
+}

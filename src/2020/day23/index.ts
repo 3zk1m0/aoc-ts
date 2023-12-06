@@ -1,11 +1,12 @@
 import { test, readInput, runPart } from '../../utils'
 
-const prepareInput = (rawInput: string) => rawInput.split('').map(x => parseInt(x))
+const prepareInput = (rawInput: string) =>
+  rawInput.split('').map((x) => parseInt(x))
 
 const input = prepareInput(readInput())
 
-const MAXCUP = 1000000;
-const MINCUP = 1;
+const MAXCUP = 1000000
+const MINCUP = 1
 
 class Node {
   value: number
@@ -60,11 +61,11 @@ const part1 = () => {
   input.slice(1).forEach((cup) => {
     const node = addNode(cup, head)
     lookup[cup] = node
-  });
+  })
 
   runGame(100, lookup, head)
-  
-  const result:number[] = []
+
+  const result: number[] = []
   let tmp = lookup[1].right
   while (tmp.value != 1) {
     result.push(tmp.value)
@@ -83,7 +84,7 @@ const part2 = () => {
   input.slice(1).forEach((cup) => {
     const node = addNode(cup, head)
     lookup[cup] = node
-  });
+  })
 
   for (let i = 10; i <= 1000000; i++) {
     const node = addNode(i, head)
@@ -101,7 +102,5 @@ const part2 = () => {
 
 /* Results */
 
-runPart("Part One:", part1)
-runPart("Part Two:", part2)
-
- 
+runPart('Part One:', part1)
+runPart('Part Two:', part2)
