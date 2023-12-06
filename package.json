@@ -2,32 +2,25 @@
   "name": "aoc-ts",
   "version": "0.0.1",
   "description": "",
-  "main": "index.ts",
+  "main": "./src/index.ts",
   "homepage": "https://https://github.com/3zk1m0/aoc-ts",
   "scripts": {
     "build": "tsc -b",
-    "start": "ts-node src/index.ts",
-    "singleDay": "ts-node src/index.ts runDay",
-    "singleDay:debug": "nodemon --inspect src/index.ts -- runDay"
+    "start": "bun run ./src/index.ts runDay",
+    "dev": "bun --watch --hot --inspect ./src/index.ts runDay"
   },
   "author": "Sander Kallio",
   "license": "MIT",
   "devDependencies": {
-    "@types/fs-extra": "^9.0.11",
-    "@types/node": "^15.6.0",
-    "@types/yargs": "^17.0.0",
-    "nodemon": "^2.0.14",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4",
-    "typescript-strict-plugin": "^1.1.1"
+    "bun-types": "1.0.15",
+    "typescript": "5.3.2",
+    "typescript-strict-plugin": "2.2.1"
   },
   "dependencies": {
     "aoc-helper": "^0.1.0",
     "collections": "^5.1.12",
     "commander": "^8.3.0",
-    "dotenv": "^10.0.0",
-    "fs-extra": "^10.0.0",
-    "kleur": "^4.1.4"
+    "kleur": "4.1.5"
   },
   "keywords": [
     "Typescript",
