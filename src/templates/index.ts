@@ -1,13 +1,14 @@
 import { test, readInput, runPart } from '../../utils'
 
+type Input = ReturnType<typeof prepareInput>
 
 const prepareInput = (rawInput: string) => rawInput
 
-const part1 = (input) => {
+const part1 = (input: Input) => {
 
 }
 
-const part2 = (input) => {
+const part2 = (input: Input) => {
  
 }
 
