@@ -1,4 +1,3 @@
-import yargs from 'yargs'
 import { test, readInput, runPart } from '../../utils'
 
 type Input = number[][]

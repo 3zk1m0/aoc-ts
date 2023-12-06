@@ -2,19 +2,12 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "lib": [
-      "dom",
-      "es6",
-      "es2017",
-      "esnext.asynciterable",
-      "es2019",
-      "es2020"
-    ],
+    "lib": ["dom", "es6", "es2017", "esnext.asynciterable", "es2019", "es2020"],
     "plugins": [
       {
-       "name": "typescript-strict-plugin"
+        "name": "typescript-strict-plugin"
       }
-     ],
+    ],
     "strict": false,
     "sourceMap": true,
     "outDir": "./dist",
@@ -35,11 +28,6 @@
     "resolveJsonModule": true,
     "baseUrl": "."
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "./src/**/*.tsx",
-    "./src/**/*.ts"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }

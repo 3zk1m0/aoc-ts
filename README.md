@@ -2,7 +2,7 @@
 
 ## Intro
 
-This repo contains environment for running [Advent of Code](https://adventofcode.com/2019) challenges, with:
+This repo contains environment for running [Advent of Code](https://adventofcode.com) challenges, with:
 
 - automatic creation of a challenge template,
 - automatic execution of a challenge code (with reloads),
@@ -11,15 +11,15 @@ This repo contains environment for running [Advent of Code](https://adventofcode
 ## Running dev mode
 
 Run current day
+
 ```
-npm run singleDay
+bun run start
 ```
 
 Run specified day
-```
-npm run singleDay -- --day 20 --year 2019
-```
 
-To debug use "singleDay:debug" instead
+```
+bun run dev --day 20 --year 2019
+```
 
 If the day folder does not exist, it will be created from template.

@@ -1,5 +1,5 @@
 import { isDeepStrictEqual } from "util"
-import * as kleur from "kleur"
+import kleur from "kleur"
 
 let index = 0
 
