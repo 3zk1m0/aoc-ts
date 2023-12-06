@@ -1,8 +1,6 @@
 import { test, readInput, runPart } from '../../utils'
 
-
 const prepareInput = (rawInput: string) => rawInput.split('\n')
-
 
 const PAIRS = {
   '(': ')',
@@ -25,8 +23,7 @@ const SCORE_B = {
   '>': 4,
 }
 
-const checkSyntax = (data:string) => {
-
+const checkSyntax = (data: string) => {
   const stack = []
 
   for (let i in [...data]) {
@@ -43,18 +40,16 @@ const checkSyntax = (data:string) => {
   return -1
 }
 
-const part1 = (input:string[]) => {
-
+const part1 = (input: string[]) => {
   return input
-    .map(x => [x, checkSyntax(x)])
-    .filter(x => x[1] >= 0)
-    .map(x => x[0][x[1]])
-    .map(x => SCORE_A[x])
-    .reduce((r,x) => r + x, 0)
-
+    .map((x) => [x, checkSyntax(x)])
+    .filter((x) => x[1] >= 0)
+    .map((x) => x[0][x[1]])
+    .map((x) => SCORE_A[x])
+    .reduce((r, x) => r + x, 0)
 }
 
-const findMissing = (data:string) => {
+const findMissing = (data: string) => {
   const stack = []
 
   for (let i in [...data]) {
@@ -65,19 +60,17 @@ const findMissing = (data:string) => {
     }
     stack.pop()
   }
-  return stack.map(x => PAIRS[x]).reverse()
+  return stack.map((x) => PAIRS[x]).reverse()
 }
 
-
 const part2 = (input) => {
- 
   const rows = input
-    .filter(row => checkSyntax(row) === -1)
-    .map(row => findMissing(row))
-    .map(data => data.reduce((r, x) => r * 5 + SCORE_B[x], 0))
-    .sort((a,b) => a - b)
-  
-  const middleIndex = Math.floor(rows.length/2)
+    .filter((row) => checkSyntax(row) === -1)
+    .map((row) => findMissing(row))
+    .map((data) => data.reduce((r, x) => r * 5 + SCORE_B[x], 0))
+    .sort((a, b) => a - b)
+
+  const middleIndex = Math.floor(rows.length / 2)
   return rows[middleIndex]
 }
 
@@ -99,8 +92,6 @@ test(findMissing('<{([{{}}[<[[[<>{}]]]>[]]'), '])}>'.split(''))
 
 export const main = async (args) => {
   const input: any = prepareInput(await readInput(args))
-  runPart("Part One:", () => part1(input))
-  runPart("Part Two:", () => part2(input))
+  runPart('Part One:', () => part1(input))
+  runPart('Part Two:', () => part2(input))
 }
-
- 

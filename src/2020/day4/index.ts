@@ -1,10 +1,10 @@
 import { test, readInput, runPart } from '../../utils'
 
 const prepareInput = (rawInput: string) => {
-  const passports = rawInput.split('\n\n').map(x => {
+  const passports = rawInput.split('\n\n').map((x) => {
     const rows = x.split('\n')
-    const fields = rows.map(x => x.split(' '))
-    return fields.flat().map(x => x.split(':'))
+    const fields = rows.map((x) => x.split(' '))
+    return fields.flat().map((x) => x.split(':'))
   })
   return passports
 }
@@ -12,25 +12,24 @@ const prepareInput = (rawInput: string) => {
 const required = [
   'byr',
   'iyr',
-  'eyr', 
+  'eyr',
   'hgt',
-  'hcl', 
+  'hcl',
   'ecl',
-  'pid', 
+  'pid',
   // 'cid', ignored
 ]
 
 const input = prepareInput(readInput())
 
 const part1 = () => {
+  const data: string[][] = JSON.parse(JSON.stringify(input))
 
-  const data:string[][] = JSON.parse(JSON.stringify(input))
-
-  const result = data.filter(x => {
-    const keys = x.map(y => y[0])
+  const result = data.filter((x) => {
+    const keys = x.map((y) => y[0])
     for (const y of required) {
       if (!keys.includes(y)) return false
-    };
+    }
     return true
   })
 
@@ -49,38 +48,38 @@ const part1 = () => {
 // cid (Country ID) - ignored, missing or not.
 
 const validation = {
-  byr: x => (1920 <= parseInt(x) && parseInt(x) <= 2002),
-  iyr: x => (2010 <= parseInt(x) && parseInt(x) <= 2020),
-  eyr: x => (2020 <= parseInt(x) && parseInt(x) <= 2030),
-  hgt: x => {
-    const val = parseInt(x.slice(0,-2))
-    if (x.slice(-2) == 'cm') return (150 <= val && val <= 193)
-    return (59 <= val && val <= 76)
+  byr: (x) => 1920 <= parseInt(x) && parseInt(x) <= 2002,
+  iyr: (x) => 2010 <= parseInt(x) && parseInt(x) <= 2020,
+  eyr: (x) => 2020 <= parseInt(x) && parseInt(x) <= 2030,
+  hgt: (x) => {
+    const val = parseInt(x.slice(0, -2))
+    if (x.slice(-2) == 'cm') return 150 <= val && val <= 193
+    return 59 <= val && val <= 76
   },
-  hcl: x => {
+  hcl: (x) => {
     if (x.match(/#[0-9A-Fa-f]{6}\b/)) return true
     return false
   },
-  ecl: x => (['amb','blu','brn','gry','grn','hzl','oth'].includes(x)),
-  pid: x => {
+  ecl: (x) => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(x),
+  pid: (x) => {
     if (x.match(/[0-9]{6}\b/) && x.length == 9) return true
     return false
   },
-  cid: x => true
+  cid: (x) => true,
 }
 
 const part2 = () => {
-  const data:string[][] = JSON.parse(JSON.stringify(input))
+  const data: string[][] = JSON.parse(JSON.stringify(input))
 
-  const result = data.filter(x => {
-    const keys = x.map(y => y[0])
+  const result = data.filter((x) => {
+    const keys = x.map((y) => y[0])
     for (const y of required) {
       if (!keys.includes(y)) return false
-    };
+    }
 
     for (const field of x) {
       if (!validation[field[0]](field[1])) return false
-    };
+    }
 
     return true
   })
@@ -94,5 +93,5 @@ const part2 = () => {
 
 /* Results */
 
-runPart("Part One:", part1)
-runPart("Part Two:", part2)
+runPart('Part One:', part1)
+runPart('Part Two:', part2)

@@ -1,8 +1,9 @@
 import { test, readInput, runPart } from '../../utils'
 
-const prepareInput = (rawInput: string) => rawInput.split('\n').map(row => row.split(''))
+const prepareInput = (rawInput: string) =>
+  rawInput.split('\n').map((row) => row.split(''))
 
-const part1 = (map:string[][]) => {
+const part1 = (map: string[][]) => {
   let count = 0
   let changed = true
   const width = map[0].length
@@ -10,7 +11,7 @@ const part1 = (map:string[][]) => {
   while (changed) {
     changed = false
     for (let turn of ['>', 'v']) {
-      const newMap = map.map(row => row.map(cell => cell))
+      const newMap = map.map((row) => row.map((cell) => cell))
       map.forEach((row, y) =>
         row.forEach((cell, x) => {
           const dx = turn === '>' ? (x + 1) % width : x
@@ -21,7 +22,7 @@ const part1 = (map:string[][]) => {
             changed = true
           }
         })
-      );
+      )
       map = newMap
     }
     count++
@@ -29,7 +30,6 @@ const part1 = (map:string[][]) => {
 
   return count
 }
-
 
 /* Tests */
 
@@ -41,5 +41,3 @@ export const main = async (args) => {
   const input: any = prepareInput(await readInput(args))
   runPart('Part One:', () => part1(input))
 }
-
- 

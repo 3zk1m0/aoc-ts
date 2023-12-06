@@ -1,13 +1,13 @@
 import { test, readInput, runPart } from '../../utils'
 
-const prepareInput = (rawInput: string): number[] => rawInput.split('\n').map(x => parseInt(x))
+const prepareInput = (rawInput: string): number[] =>
+  rawInput.split('\n').map((x) => parseInt(x))
 
-const part1 = (input:number[]) => {
-
+const part1 = (input: number[]) => {
   for (const x of input) {
     for (const y of input) {
-      if (x+y == 2020) {
-        return x*y
+      if (x + y == 2020) {
+        return x * y
       }
     }
   }
@@ -15,12 +15,12 @@ const part1 = (input:number[]) => {
   return 0
 }
 
-const part2 = (input:number[]) => {
+const part2 = (input: number[]) => {
   for (const x of input) {
     for (const y of input) {
       for (const z of input) {
-        if (x+y+z == 2020) {
-          return x*y*z
+        if (x + y + z == 2020) {
+          return x * y * z
         }
       }
     }
@@ -36,9 +36,6 @@ const part2 = (input:number[]) => {
 export const main = async (args) => {
   // console.log(await readInput(args))
   const input: any = prepareInput(await readInput(args))
-  runPart("Part One:", () => part1(input))
-  runPart("Part Two:", () => part2(input))
+  runPart('Part One:', () => part1(input))
+  runPart('Part Two:', () => part2(input))
 }
-
-
-

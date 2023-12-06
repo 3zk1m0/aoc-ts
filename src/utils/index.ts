@@ -3,9 +3,4 @@ import { test } from './test'
 import { initDay } from './createTemplate'
 import { runPart } from './measure'
 
-export {
-  readInput,
-  test,
-  initDay,
-  runPart,
-}
+export { readInput, test, initDay, runPart }
