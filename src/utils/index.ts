@@ -1,6 +1,6 @@
-import { readInput } from './inputData'
-import { test } from './test'
-import { initDay } from './createTemplate'
-import { runPart } from './measure'
+export * from './inputData'
+export * from './test'
+export * from './createTemplate'
+export * from './measure'
+export * from './types'
 
-export { readInput, test, initDay, runPart }
