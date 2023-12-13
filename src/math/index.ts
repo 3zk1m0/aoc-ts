@@ -9,3 +9,15 @@ export const manhattanDistance = (a: [number, number], b: [number, number]) => {
   const [x2, y2] = b
   return Math.abs(x1 - x2) + Math.abs(y1 - y2)
 }
+
+export const transpose2d = <T>(grid: T[][]): T[][] => {
+  const columns: T[][] = []
+  for (let x = 0; x < grid[0].length; x++) {
+    columns.push(grid.map((row) => row[x]))
+  }
+  return columns
+}
+
+export const getDiffCount = (a: string[], b: string[]) => {
+  return a.filter((x, i) => x !== b[i]).length
+}
