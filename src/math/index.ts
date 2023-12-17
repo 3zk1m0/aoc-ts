@@ -21,3 +21,9 @@ export const transpose2d = <T>(grid: T[][]): T[][] => {
 export const getDiffCount = (a: string[], b: string[]) => {
   return a.filter((x, i) => x !== b[i]).length
 }
+
+export const inRange2d = (pos: [number, number], arr: any[][]) => {
+  return (
+    pos[0] >= 0 && pos[0] < arr.length && pos[1] >= 0 && pos[1] < arr[0].length
+  )
+}
