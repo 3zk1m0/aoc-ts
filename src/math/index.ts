@@ -27,3 +27,13 @@ export const inRange2d = (pos: [number, number], arr: any[][]) => {
     pos[0] >= 0 && pos[0] < arr.length && pos[1] >= 0 && pos[1] < arr[0].length
   )
 }
+// Shoelace formula https://en.wikipedia.org/wiki/Shoelace_formula
+export const polygonArea = (polygon: [number, number][]) => {
+  let area = 0
+  for (let i = 0; i < polygon.length; i++) {
+    const j = (i + 1) % polygon.length
+    area += polygon[i][0] * polygon[j][1]
+    area -= polygon[j][0] * polygon[i][1]
+  }
+  return Math.abs(area) / 2
+}
