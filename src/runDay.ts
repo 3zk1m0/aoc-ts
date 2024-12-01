@@ -13,7 +13,7 @@ export const runDay = async (args: Args) => {
   console.log(`Running day ${args.day} of ${args.year}`)
   require(`./${args.year}/day${args.day}`)
     .main(args)
-    .catch((error) => {
+    .catch((error: any) => {
       console.error('Error:')
       console.error(error)
     })

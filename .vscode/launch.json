@@ -10,7 +10,7 @@
       "program": "${workspaceFolder}/src/index.ts",
 
       // The arguments to pass to the program, if any.
-      "args": ["runDay", "${input:day}", "${input:year}"],
+      "args": ["runDay", "--day=${input:day}", "--year=${input:year}"],
 
       // The working directory of the program.
       "cwd": "${workspaceFolder}",
@@ -91,6 +91,7 @@
       "default": "default",
       "options": [
         "default",
+        "2024",
         "2023",
         "2022",
         "2021",
