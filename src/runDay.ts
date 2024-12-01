@@ -1,18 +1,12 @@
-import { initDay } from './utils'
+import { Args, initDay, readInput } from './utils'
 
-interface Args {
-  day: string
-  year: string
-}
-
-export const runDay = async (args: Args) => {
-  if (args.day === 'default') args.day = new Date().getDate().toString()
-  if (args.year === 'default') args.year = new Date().getFullYear().toString()
+export async function runDay(args: Args) {
   console.clear()
   await initDay(args)
   console.log(`Running day ${args.day} of ${args.year}`)
+  const input = await readInput(args)
   require(`./${args.year}/day${args.day}`)
-    .main(args)
+    .main(input)
     .catch((error: any) => {
       console.error('Error:')
       console.error(error)

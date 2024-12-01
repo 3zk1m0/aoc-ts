@@ -26,8 +26,8 @@ const part = (input: number[], days) => {
 const part1 = (input) => part(input, 80)
 const part2 = (input) => part(input, 256)
 
-export const main = async (args) => {
-  const input: any = prepareInput(await readInput(args))
+export async function main(args: string) {
+  const input = runPart('Input', () => prepareInput(args), true)
   runPart('Part One:', () => part1(input))
   runPart('Part Two:', () => part2(input))
 }

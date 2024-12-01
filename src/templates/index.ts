@@ -1,4 +1,4 @@
-import { test, readInput, runPart, Args } from '../../utils'
+import { test, runPart } from '../../utils'
 
 type Input = ReturnType<typeof prepareInput>
 
@@ -14,8 +14,8 @@ const part2 = (input: Input) => {}
 
 /* Results */
 
-export const main = async (args: Args) => {
-  const input: any = prepareInput(await readInput(args))
+export const main = async (args: string) => {
+  const input = runPart('Input', () => prepareInput(args), true)
   runPart('Part One:', () => part1(input))
   runPart('Part Two:', () => part2(input))
 }

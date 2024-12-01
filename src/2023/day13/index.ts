@@ -55,7 +55,7 @@ const part2 = (input: Input) => {
 /* Results */
 
 export const main = async (args: Args) => {
-  const input: any = prepareInput(await readInput(args))
+  const input = runPart('Input', () => prepareInput(args), true)
   runPart('Part One:', () => part1(input))
   runPart('Part Two:', () => part2(input))
 }

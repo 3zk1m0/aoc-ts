@@ -35,8 +35,8 @@ const part = (input, partB = false) => {
 const part1 = (input) => part(input, false)
 const part2 = (input) => part(input, true)
 
-export const main = async (args) => {
-  const input: any = prepareInput(await readInput(args))
+export async function main(args: string) {
+  const input = runPart('Input', () => prepareInput(args), true)
   runPart('Part One:', () => part1(input))
   runPart('Part Two:', () => part2(input))
 }

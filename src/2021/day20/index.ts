@@ -52,9 +52,9 @@ const part = (input, times) => {
 
 /* Results */
 
-export const main = async (args) => {
+export async function main(args: string) {
   const str = await readInput(args)
-  const input: any = prepareInput(await readInput(args))
+  const input = runPart('Input', () => prepareInput(args), true)
   runPart('Part One:', () => part(input, 2))
   runPart('Part Two:', () => part(input, 50))
 }

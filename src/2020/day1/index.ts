@@ -33,9 +33,9 @@ const part2 = (input: number[]) => {
 
 /* Results */
 
-export const main = async (args) => {
+export async function main(args: string) {
   // console.log(await readInput(args))
-  const input: any = prepareInput(await readInput(args))
+  const input = runPart('Input', () => prepareInput(args), true)
   runPart('Part One:', () => part1(input))
   runPart('Part Two:', () => part2(input))
 }

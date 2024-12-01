@@ -37,7 +37,7 @@ const part1 = (map: string[][]) => {
 
 /* Results */
 
-export const main = async (args) => {
-  const input: any = prepareInput(await readInput(args))
+export async function main(args: string) {
+  const input = runPart('Input', () => prepareInput(args), true)
   runPart('Part One:', () => part1(input))
 }
