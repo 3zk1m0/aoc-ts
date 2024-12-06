@@ -28,3 +28,17 @@ export function runPart<T extends () => any>(title: string, part: T, skipValue =
 
   return solution
 }
+
+export async function runPartAsync<T extends () => Promise<any>>(title: string, part: T, skipValue = false): Promise<ReturnType<T>> {
+  const tStart = process.hrtime.bigint()
+  const solution = await part()
+  const tEnd = process.hrtime.bigint()
+
+  const time =
+    Number((tEnd - tStart) / BigInt(Math.pow(10, DECIMALS_TRUNCATED))) /
+    Math.pow(10, DECIMAL_PRECISION)
+
+  log(title, !skipValue ? solution : "", time)
+
+  return solution
+}
